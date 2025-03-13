@@ -62,7 +62,7 @@ export function DeleteAccountConfirm({
 	const handleDelete = () => {
 		toast.promise(deleteUser, {
 			loading: "Deleting...",
-			success: (_data) => {
+			success: () => {
 				return "Your account has been deleted."
 			},
 			error: "Something went wrong. Your account couldn't be deleted.",
@@ -80,24 +80,20 @@ export function DeleteAccountConfirm({
 						<DialogContent className="p-0 sm:max-w-[425px]">
 							<DialogHeader className="px-6 pt-6">
 								<DialogTitle>Delete Account</DialogTitle>
-								<DialogDescription>
-									Katarogu will <b>permanently</b> delete all data associated
-									with your account.
-									<br /> <br />
-									We recommend you export your data before deleting your
-									account.
-									<div className="mt-4 flex flex-row items-center gap-2 rounded-md border border-red-500 p-2 text-red-500 dark:border-red-700">
-										<ExclamationTriangleIcon className="h-4 w-4 text-red-500 dark:text-red-700" />
-										<span>
-											This action is <b>not</b> reversible.
-										</span>
-									</div>
+								<DialogDescription asChild>
+									<span>
+										Katarogu will <b>permanently</b> delete all data associated
+										with your account.
+										<br /> <br />
+										We recommend you export your data before deleting your
+										account.
+									</span>
 								</DialogDescription>
 							</DialogHeader>
-							<div className="flex flex-col items-start gap-4 px-6 pb-6">
+							<div className="flex flex-col items-start gap-4 px-6 pb-4">
 								<div className="flex w-full flex-col gap-1">
-									<Label htmlFor="name" className="text-sm text-neutral-500">
-										Enter your username <b>{user.username}</b> to continue:
+									<Label htmlFor="name" className="text-sm text-neutral-500 gap-1">
+										Enter your username <b className="">{user.username}</b> to continue:
 									</Label>
 									<Input
 										value={username}
@@ -105,7 +101,7 @@ export function DeleteAccountConfirm({
 									/>
 								</div>
 								<div className="flex w-full flex-col gap-1">
-									<Label htmlFor="name" className="text-sm text-neutral-500">
+									<Label htmlFor="name" className="text-sm text-neutral-500 gap-1">
 										To verify, type <b>delete my account</b> below:
 									</Label>
 									<Input

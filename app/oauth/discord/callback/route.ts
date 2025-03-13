@@ -11,8 +11,8 @@ export async function GET(request: Request): Promise<Response> {
 	const url = new URL(request.url);
 	const code = url.searchParams.get("code");
 	const state = url.searchParams.get("state");
-	const storedState = cookies().get("discord_oauth_state")?.value ?? null;
-	const flow = cookies().get("discord_oauth_flow")?.value ?? "auth";
+	const storedState = (await cookies()).get("discord_oauth_state")?.value ?? null;
+	const flow = (await cookies()).get("discord_oauth_flow")?.value ?? "auth";
 
 	if (code === null || state === null || storedState === null) {
 		return new Response(null, {
@@ -34,8 +34,9 @@ export async function GET(request: Request): Promise<Response> {
 
 	let tokens: OAuth2Tokens;
 	try {
-		tokens = await discord.validateAuthorizationCode(code);
-	} catch (e) {
+		tokens = await discord.validateAuthorizationCode(code, null);
+	} catch (err) {
+		console.error(err);
 		// Invalid code or client credentials
 		return new Response(null, {
 			status: 302,
