@@ -1,6 +1,3 @@
-> [!WARNING]
-> This project is currently under hiatus until the development of Campsite Chat reaches to a beta state.
-
 ![banner](/public/banner.png)
 
 # What is Katarogu?
