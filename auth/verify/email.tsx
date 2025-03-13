@@ -110,6 +110,8 @@ const button = {
 	textAlign: "center" as const,
 	display: "block",
 	padding: "11px 23px",
+	marginLeft: "auto",
+	marginRight: "auto"
 };
 
 const reportLink = {
