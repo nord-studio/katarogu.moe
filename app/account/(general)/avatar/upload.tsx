@@ -206,7 +206,7 @@ export default function AvatarUpload(props: ButtonProps) {
 					onChange={onSelectFile}
 				/>
 				<Dialog open={open} onOpenChange={onOpenChange}>
-					<DialogContent className="w-1/2 gap-0 p-0">
+					<DialogContent className="w-full max-w-fit gap-0 p-0">
 						<ReactCrop
 							crop={crop}
 							onChange={(_, p) => setCrop(p)}
